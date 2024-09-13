@@ -73,4 +73,42 @@ sistema.listar_clientes()
 #4º le pedimos que nos busque al cliente Ana, y nos devuelve "None" ya que no existe.
 #5º eliminamos al cliente Antonio y nos muestra en un mensaje que se ha eliminado el cliente.
 #6º en cambio, si le pedimos eliminar al cliente Ana, nos dice que no ha encontrado clientes con ese nombre.
-#7º por último, le pedimos que nos vuelva a mostrar la lista de clientes, en la que solo aparecen Alejandra y Roberto.
+#7º por ultimo, le pedimos que nos vuelva a mostrar la lista de clientes, en la que solo aparecen Alejandra y Roberto.
+
+#Funcion principal
+def main():
+
+    while True:
+        print("\n--- Menú ---")
+        print("1: Agregar un cliente")
+        print("2: Eliminar un cliente")
+        print("3: Buscar un cliente")
+        print("4: Listar todos los clientes")
+        print("5: Salir")
+
+        opcion = input("Seleccione una opción: ")
+        if opcion == "1":
+            nombre = input("Ingrese el nombre del cliente: ")
+            email = input("Ingrese el email del cliente: ")
+            telefono = input("Ingrese el telefono del cliente: ")
+            cliente = Cliente (nombre, email, telefono)
+            sistema.agregar_cliente(cliente)
+            return print(f"Cliente {nombre} agregado al sistema")
+        elif opcion == "2":
+            nombre = input("Ingrese el nombre del cliente a eliminar: ")
+            sistema.eliminar_cliente(nombre)
+            print(f"Cliente {nombre} eliminado del sistema.")
+        elif opcion == "3":
+            nombre = input("Ingrese el nombre del cliente a buscar: ")
+            cliente = sistema.buscar_cliente(nombre)
+            if cliente: print(f"Cliente encontrado: {nombre} - {email}, {telefono}")
+            else: print (f"Cliente {nombre} no encontrado.")
+        elif opcion == "4":
+            sistema.listar_clientes()
+        elif opcion == "5":
+            print("Saliendo del sistema de gestión de clientes.")
+            break
+        else:
+            print("Opción no válida. Por favor, intenta de nuevo.")
+
+if __name__ == "__main__": main()
