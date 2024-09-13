@@ -19,18 +19,18 @@ class SistemaClientes:
         self.clientes = [] #Inicializamos la lista (de momento vacía) de clientes.
     def agregar_cliente (self, cliente): 
         self.clientes.append(cliente) #Agregar un nuevo cliente a la lista.
-        print(f"El cliente {cliente.nombre} fue agregado satisfactoriamente")
+        print(f"Cliente {cliente.nombre} agregado al sistema")
     def eliminar_cliente (self, nombre):
         for cliente in self.clientes:
             if cliente.nombre == nombre:
                 self.clientes.remove(cliente) #Elimina el cliente encontrado.
-                print(f"El cliente {nombre} fue eliminado satisfactoriamente")
+                print(f"Cliente {nombre} eliminado del sistema")
                 return
         print(f"No se han encontrado clientes con el nombre {nombre}.") #Nos muestra un mensaje indicando que no se ha encontrado al cliente.   
     def buscar_cliente (self, nombre):
         for cliente in self.clientes:
             if cliente.nombre == nombre:
-                return print (cliente) #Nos devuelve el nombre del cliente encontrado.
+                return print(f"Cliente encontrado: {cliente}.") #Nos devuelve el cliente encontrado.
         return print (None) #Nos devuelve un mensaje "None" si no encuentra al cliente.
     def listar_clientes (self):
         if not self.clientes:
@@ -93,16 +93,12 @@ def main():
             telefono = input("Ingrese el telefono del cliente: ")
             cliente = Cliente (nombre, email, telefono)
             sistema.agregar_cliente(cliente)
-            return print(f"Cliente {nombre} agregado al sistema")
         elif opcion == "2":
             nombre = input("Ingrese el nombre del cliente a eliminar: ")
             sistema.eliminar_cliente(nombre)
-            print(f"Cliente {nombre} eliminado del sistema.")
         elif opcion == "3":
             nombre = input("Ingrese el nombre del cliente a buscar: ")
             cliente = sistema.buscar_cliente(nombre)
-            if cliente: print(f"Cliente encontrado: {nombre} - {email}, {telefono}")
-            else: print (f"Cliente {nombre} no encontrado.")
         elif opcion == "4":
             sistema.listar_clientes()
         elif opcion == "5":
